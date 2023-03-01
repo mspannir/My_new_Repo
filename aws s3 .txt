@@ -1,0 +1,11 @@
+aws s3api put-bucket-versioning --bucket Bucket_name --versioning-configuration Status=Enabled,MFADelete=Disabled --mfa "arn:aws:iam::691261429482:mfa/panneer passcode"
+
+Enabled (MFA)delete :
+
+aws s3api put-bucket-versioning --bucket selvambucket --versioning-configuration Status=Enabled,MFADelete=Enabled --mfa "arn:aws:iam::691261429482:mfa/panneer 798855"
+
+Disabled (MFA)delete :
+
+aws s3api put-bucket-versioning --bucket selvambucket --versioning-configuration Status=Enabled,MFADelete=Disabled --mfa "arn:aws:iam::691261429482:mfa/panneer 637939"
+
+

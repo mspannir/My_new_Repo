@@ -1,0 +1,181 @@
+1. Create 10 directories with for loop.
+
+#!/bin/bash
+
+for a in {1..10}
+do
+        mkdir directory$a
+done
+
+
+2. create 5 directoty with name as file1, file2...file5 and 5 more directory
+   as dir1, dir2....dir5. Delete the file1,file2...file5 only (use loop)
+
+#!/bin/bash
+
+read -p "Enter the directory name:" f
+
+for a in {1..5}
+do
+        mkdir $f$a
+        mkdir dir$a
+        rmdir $f$a
+done
+
+
+3. Create 5 files and input some 5 line data into the file. Finally print the 3rd line of each file.
+
+#!/bin/bash
+
+read -p "Enter the file name:" f
+
+for a in {1..5}
+
+do
+        touch $f$a
+        echo "Higher domestic demand and a pick-up in capital investment is expected to help
+the Indian economy grow 6.5 per cent in real terms in FY24 or 2023-24,
+the Economic Survey is learnt to have projected.
+In nominal terms, the GDP growth rate is expected to be around 11 per cent,
+suggesting an average annual inflation during the next financial year to be 4.5 per cent." >> $f$a
+
+	  head -n 3 $f$a | tail -n 1
+done
+
+ 
+
+4. Create 5 files and input some 5 line data into the file. Do find and replace
+
+#!/bin/bash
+
+read -p "Enter the file name:" f
+
+for a in {1..5}
+
+do
+        touch $f$a
+        echo "Higher domostic demand " >> $f$a
+        sed -i 's/domostic/domestic/g' $f$a 
+
+done
+
+
+
+5.run ls -la command and extract the last column and 
+print each name of the column with echo command with some string.
+
+
+ls -la | awk '{print " This is a ls -la last column "$9}'
+
+
+
+6. check the memory usage status of your server and print the free/available column in human readable format.
+
+
+free -h | awk '{print $4 $7}' >> readable_file
+
+
+
+7. check the disc free status and print the first and last column in file (if use percentage is greater than 50%).
+
+
+df -h | awk '$5 >= 50 {print $1 $NF}'
+
+
+---------------------------------
+
+df -h | wc -l
+
+df -h | awk '{print$5}'
+
+for a in { if [[ 0 > 50]] }
+do
+	
+
+done
+
+
+8. collect input while running script and do find & replace in file with input data, print the result.
+
+
+#!/bin/bash
+
+input1=file
+
+input2=increase
+
+input3=increases
+
+for a in $input1
+
+do
+        sed -i 's/$input2/$input3/g' $input1 -- this is not work
+	  
+	  sed -i 's/$input2/$input3/g' $input1 --this is work
+
+        
+	  cat $input1
+
+done
+
+
+
+ echo "Finance Minister Nirmala Sitharaman announced an increase in the income tax rebate limit from Rs 5 lakh to Rs 7 lakh under the new tax." $input1
+
+
+
+9. input file name and extention like (.txt, .json, .yml..etc). 
+Based on the input it should create 5 file like file1.txt...file5.txt 
+(or) file.json...file5.json (or) file1....file5.yml depends upon your input.
+
+#!/bin/bash
+
+input1=panneer
+input2=.txt
+for a in {1..5}
+
+do
+        touch $input1$a$input2
+done
+
+
+10. create 5 file with different number of lines manually. 
+create script and get the file name as input while running the script, 
+count the number of lines and characters present in the file and print it.
+
+#!/bin/bash
+
+
+
+file1=selvam1
+file2=selvam2
+file3=selvam3
+file4=selvam4
+file5=selvam5
+
+for a in $file1
+
+do
+
+        cat $file1 | wc -l
+        cat $file1 | wc -m
+	  cat $file2 | wc -l
+        cat $file2 | wc -m
+        cat $file3 | wc -l
+        cat $file3 | wc -m
+	  cat $file4 | wc -l
+        cat $file4 | wc -m
+	  cat $file5 | wc -l
+        cat $file5 | wc -m
+
+
+done
+
+
+
+
+
+
+
+
+"Higher domestic demand and a pick-up in capital investment is expected to help \n the Indian economy grow 6.5 per cent in real terms in FY24 or 2023-24, \n the Economic learnt to have projected. \n In nominal terms, the GDP growth rate is expected to be around 11 per cent, \n suggesting an average annual inflation during the next financial year to be 4.5 per cent. \ n"
